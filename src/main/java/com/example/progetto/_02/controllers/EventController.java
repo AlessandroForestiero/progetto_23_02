@@ -41,7 +41,7 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdEvent);
     }
 
-    @PutMapping("/{Id}")
+    @PutMapping("/event/{Id}")
     @PreAuthorize("hasRole('ADMIN')")
     public  ResponseEntity<?> updateEvent(@RequestBody @Valid EventRequest eventRequest,@PathVariable int id,BindingResult bindingResult,Authentication authentication) {
         if (!isUserAdmin(authentication)) {
@@ -57,7 +57,7 @@ public class EventController {
 
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/event/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> deleteEvent(@PathVariable int id,Authentication authentication,BindingResult bindingResult) {
         if (!isUserAdmin(authentication)) {
